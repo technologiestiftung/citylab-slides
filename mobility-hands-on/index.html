@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../css/reveal.css">
+		<!-- <link rel="stylesheet" href="css/theme/black.css"> -->
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<style>
+			.reveal {
+				color: #393a60;
+				text-align: left;
+			}
+
+			.logo {
+				position: absolute;
+				bottom: 50px;
+				right: 50px;
+				width: 200px;
+			}	
+
+			h1 {
+				color: #2f2fa2;
+				font-size: 3.75rem;
+				text-align: left;
+				margin-bottom: 3rem;
+			}
+
+			h2 {
+				color: #2f2fa2;
+				font-size: 3rem;
+				margin-bottom: 3rem;
+				text-align: left;
+			}
+
+			h3 {
+				font-size: 2rem;
+				margin-bottom: 20px;
+				text-align: left;
+			}
+
+			h4 {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+			h5 {
+				font-size: 1rem;
+				text-align: left;
+				margin-bottom: 5px;
+			}
+
+			h6 {
+				color: white;
+			}
+
+			strong {
+				color: #393a60;
+			}
+
+			p {
+				color: #393a60;
+				text-align: left;
+				font-size: 1.5rem;
+			}
+
+			ul {
+				margin: 0;
+			}
+
+			ul {
+				list-style-type: none;
+			}
+
+			ul > li {
+				text-indent: -5px;
+			}
+
+			ul > li:before {
+				content: "–  ";
+				text-indent: -10px;
+			}
+
+			li {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+			@media screen and (max-width: 1000px) {
+				.logo {
+					position: absolute;
+					bottom: 50px;
+					right: 50px;
+					width: 150px;
+				}	
+			}
+		</style>
+
+		
+		
+		<div class="reveal">
+			<img class="logo" src="../assets/citylab-logo.svg" alt="">
+			<div class="slides">
+
+				<section data-markdown>
+					<textarea data-template data-background-transition="fade" data-transition="fade-out">
+						# Hands-on mobility data workshop
+				
+						### 31.07.2019, Alexandra Kapp und Fabian Dinklage
+
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Context
+
+						- origin of the data
+						- methods of scraping
+						- quality of data
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Quality of the data
+
+						- time
+						- space
+						- potential of time space related datasets
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## What are you most interested?
+
+						- brainstorming in small groups
+						- presentation of forst ideas
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data Cleaning
+
+						- ratio of data trash
+						- remove errors
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Routing
+
+						- routing service
+						- docker container
+						- server pipeline
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Vis Examples
+
+						- Deck Gl layers
+						- and more.. 
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Preprocessing
+
+						- get the data in the right format
+						- file formats 
+						- investigate necessary data structures (geojson, trails e.g.)
+					</textarea>
+				</section>	
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## How does it scale?
+
+						- automation
+						- setup of structures
+						- aws, docker, cronjobs, db requests
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data analysis
+
+						- ratio of data trash
+						- remove errors
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data dive
+
+						- analyse the dataset in small groups
+						- define first research questions
+						- sketch visualisation ideas
+					</textarea>
+				</section>
+
+				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="https://www.citylab-berlin.org/images/hero_img_03.jpg"></section>
+
+				<section data-transition="fade-in fade-out" data-markdown data-background-image="../assets/images/gen-shape.png">
+					<textarea data-template>
+						## Contact:
+
+						<!-- __citylab-berlin.org__ -->
+						- @citylabberlin
+						- citylab-berlin.org
+					</textarea>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				// slideNumber: true,
+				controls: false,
+				backgroundTransition: 'fade',
+				transition: 'linear',
+				center: true,
+				transitionSpeed: 'slow',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
