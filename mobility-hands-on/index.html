@@ -133,12 +133,112 @@
 
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
-						## Context
-
-						- origin of the data
-						- methods of scraping
-						- quality of data
+						## Agenda
+						- Context: Why bike-sharing data
+						- Data collection
+						- Data cleaning and data quality
+						- Data visualization
+						- Pseudonymisation
+						- Data Analysis
 					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Context
+						- Data of bike-sharing trips as an example of mobility data
+						- Why data of bike-sharing providers?
+							- Detailed mobility data for whole Berlin
+							- Other countries make obligations for open data
+							- Many possibilities: urban planning, businesses (e.g. mobility apps), monitoring of compliance with city laws (e.g. prohibited parking zones)
+						- Data: all trips of three bike-sharing providers for Berlin over three months
+						</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Use Cases
+						What are interesting use cases, analyses and visualizations that are possible with this data?
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Procedure
+						<img src="./assets/images/procedure.png" alt="">
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data collection
+						- APIs of bike-sharing providers: 
+						  real-time locations of all available bikes
+						- **Challenge 1**: Getting Data off each API
+							- [Details on different APIs](https://lab.technologiestiftung-berlin.de/projects/bike-sharing/de/)
+						- **Challenge 2**: Collecting all trips
+							- Query all APIs every 4 minutes
+							- Run script via Uberspace server with a cronjob
+							- store data in a database (AWS RDS Postgres Database)
+						</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data Collection
+						- **Challenge 3**: Amount of Data
+						- With Queries every 4 minutes and approx. 10.000 bikes thats:
+							- 150.000 rows each hour
+							- 3.500.000 rows each day
+							- 25.000.000 rows each week
+							<img src="./assets/images/screenshot-db.png" alt="">
+						</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data Collection
+						- **Challenge 3**: Amount of Data
+							- After three month 20 GB storage was full
+							- Start of daily cleaning script (again: cronjob on Uberspace):
+							Delete all rows, were the location of the bike did not change
+							<img src="./assets/images/delete-duplicate.png" alt="">
+						</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data Cleaning: Implausible Locations
+						<img src="./assets/images/map-raw.png" alt="">
+						</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+						<textarea data-template>
+							## Data Cleaning:Implausible Peaks over time
+							<img src="./assets/images/4am-peak.png" alt="">
+							</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+						<textarea data-template>
+							## Data Cleaning:Implausible Provider
+							<img src="./assets/images/distance-comparison.png" alt="">
+							</textarea>
+				</section>
+					
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data Cleaning
+						- **Raw:** 1,5 Billion rows
+						- **After cleaning of database:** 4,9 Mio rows
+						- **Remove data outside Berlin:** 4,8 Mio rows
+						- **Merge locations to trips:** 2,4 Mio. trips
+						- **Remove trips < 100 meters:** 0,8 Mio. trips 
+						- **Remove trips longer than 24 h:** 0,7 Mio. trips
+						- **Remove trips faster than 30 km/h:** 0,6 Mio. trips
+						- **Remove provider with unplausible data:** 0,3 Mio. trips
+						</textarea>
 				</section>
 
 				<section data-markdown data-transition="fade-in fade-out">
@@ -217,15 +317,44 @@
 					</textarea>
 				</section>
 
+
+				<section data-markdown data-transition="fade-in fade-out">
+						<textarea data-template>
+							## Pseudonymisation
+							- NO unique bike ID and NO provider ID given
+							- TripID - a unique ID created by Louisville Metro
+							- StartDate - in YYYY-MM-DD format
+							- StartTime - rounded to the nearest 15 minutes in HH:MM format
+							- EndDate - in YYYY-MM-DD format
+							- EndTime - rounded to the nearest 15 minutes in HH:MM format
+							- StartLatitude - rounded to nearest 3 decimal places
+							- StartLongitude - rounded to nearest 3 decimal places
+							- EndLatitude - rounded to nearest 3 decimal places
+							- EndLongitude - rounded to nearest 3 decimal places
+							- TripDuration - duration of the trip minutes 
+							- TripDistance - distance of trip in miles based on company route data
+
+							[Standard of Harvard Civic Analytics Network](https://data.louisvilleky.gov/dataset/dockless-vehicles)
+
+						</textarea>
+					</section>
+
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
-						## Data dive
+						## Data dive: Ideas
 
 						- analyse the dataset in small groups
 						- define first research questions
 						- sketch visualisation ideas
 					</textarea>
 				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+						<textarea data-template>
+							## Data dive: Data
+							- Link to Data: xxx
+						</textarea>
+					</section>
 
 				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="https://www.citylab-berlin.org/images/hero_img_03.jpg"></section>
 
