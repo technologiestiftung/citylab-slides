@@ -153,12 +153,14 @@ body {
 
 .reveal code {
   font-family: monospace;
+  text-align: left;
   text-transform: none; }
 
 .reveal pre code {
   display: block;
   padding: 5px;
   overflow: auto;
+  text-align: left !important;
   max-height: 400px;
   word-wrap: normal; }
 

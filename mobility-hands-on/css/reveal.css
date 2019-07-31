@@ -551,6 +551,7 @@ textarea {
 
 code,
 pre {
+  text-align: left;
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
   font-family: monospace; }

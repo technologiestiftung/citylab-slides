@@ -6,12 +6,12 @@
 
 		<title>reveal.js</title>
 
+		<link rel="stylesheet" href="lib/css/monokai.css">
 		<link rel="stylesheet" href="../css/reset.css">
 		<link rel="stylesheet" href="../css/reveal.css">
 		<!-- <link rel="stylesheet" href="css/theme/black.css"> -->
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -122,6 +122,12 @@
 					width: 150px;
 				}	
 			}
+
+			pre {
+				background-color: white !important;
+				font-size: 1.25rem !important;
+			}
+
 		</style>
 
 		
@@ -253,36 +259,22 @@
 						- **Merge locations to trips:** 2,4 Mio. trips
 						- **Remove trips < 200 meters OR trips longer than 24 h OR trips faster than 30 km/h:** 0,5 Mio. trips
 						- **Remove provider with implausible data:** 0,3 Mio. trips
-						----- last slide Alex -----
+						-- last slide Alex --
 						</textarea>
 				</section>
 
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
-						## Quality of the data
+						## How to approach large datasets
+						- geospatial data analysis framework
+						- variety of visualization layers out of the box available
+						- visualize large-scale Geospatial Data
 
-						- time
-						- space
-						- potential of time space related datasets
-					</textarea>
-				</section>
-
-				<section data-markdown data-transition="fade-in fade-out">
-					<textarea data-template>
-						## Data Cleaning
-
-						- ratio of data trash
-						- remove errors
-					</textarea>
-				</section>
-
-				<section data-markdown data-transition="fade-in fade-out">
-					<textarea data-template>
-						## Routing
-
-						- routing service
-						- docker container
-						- server pipeline
+						Note:
+						- In the next slides I'll unfold to you the process we went through while developing the visualization
+						- We came to a point where we're generating tons of cleaned data
+						- This leads to a couple of questions: such as how to handle and visualize these in an appropriate way
+						- Before we go into detail about the handling let's have a look where this could lead to
 					</textarea>
 				</section>
 
@@ -290,35 +282,160 @@
 
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
-						## Vis Examples
+						## [Exploring use cases](https://deck.gl/#/examples/core-layers/geojson-layer-paths)
 
-						- Deck Gl layers
-						- and more.. 
+						Note:
+						- If you want to handle large geospational datasets, visualizing them as nodes on the browser can be a pain in the ass
+						- Fortunately there are many hardware accelerated solutions (Web.gl)
+						- One approach is the geospational framework deck.gl
+						- The framework provides a set of different layers 
+						- Preformed containers where you can just throw your data in
+						- e.g. Points, Geojson, Polygon and many more
+						- we decided to go with the trails viz but created other formats as well
 					</textarea>
 				</section>
 
-				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="./assets/images/pipeline-1.png"></section>
-				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="./assets/images/pipeline-2.png"></section>
-				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="./assets/images/pipeline-3.png"></section>
-				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="./assets/images/pipeline-4.png"></section>
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Data output
+						- bikes-accessible.geojson
+						- bikes-trips.geojson
+						- bikes-trails.json
+
+						Note:
+						- To get the most out of the data we're generating a set of three distinct datasets
+						- In order to accomplish that, a set of calculation steps were necessary
+					</textarea>
+				</section>
 
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
-						## Preprocessing
+						## Required steps
+						- aggregate bike rows to trips
+						- Creates (possible) routes with start- and endpoints
+						- Calculate distances between waypoints ([Turf.js](https://turfjs.org/))
+						- Speed of bike trips
+						- Save in appropriate data format for visualization
 
-						- get the data in the right format
-						- file formats 
-						- investigate necessary data structures (geojson, trails e.g.)
+						Note: 
+						- we created a node script that accomplishes all these steps
+
+						- sorted the db by bike id and time
+						- if the time changes but location doesn't, the bike is accessible during that time
+						- if time and location changes, the bike is being used
+
+						- In the first iteration we used a service provider (Here, Osm, Google) to calculate routes between 
+						- Transfer db rows into appropiate geojson files
+						- In the first step we did it for one weekend
+						- Make use of the geojson format
+						- Are you familiar with the structure of geojson format? if not 
+					</textarea>
+				</section>
+
+				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="./assets/images/routing-1.png"></section>
+				<section data-background-transition="fade" data-transition="fade-in fade-out" data-background-image="./assets/images/routing-2.png"></section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						```javascript
+						const geojson = {
+							"type": "FeatureCollection",
+							"features": [
+								{
+									"type": "Feature",
+									"geometry": {
+										"type": featureType, // point, polygon, line and more ...
+										"coordinates": [] // [lat,lng] here.
+									},
+									"properties": {
+										...
+									}
+								}
+							]
+						}
+						```
+
+						Notes:
+						- Object with a key that holds an array
+						- Each object in array represents one item, depending on the type your geojson has
+						- Inside the properties key more data about the item that can be stored
 					</textarea>
 				</section>	
 
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
+						```javascript
+						[
+							{
+								"vendor": 0,
+								"segments": [  // all segments represent a trip
+									[
+										13.3782979, // longitude
+										52.5076544, // latitude
+										39497.8 // timestamp
+									],
+									...
+								]
+							}
+						]
+						```
+
+						Notes:
+						- so how does the data look like?
+						- you have an array of objects
+						- each object is a trip which is based on waypoints which the trail will follow offset: 
+						- deck.gl has to know when the trail should ba at a location to animate these between the points
+						- when we decided to go for one type of visualization we have to bring the data into the right format 
+					</textarea>
+				</section>	
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## The appropiate format
+						- time
+						- space
+						- potential of time space related datasets
+
+						Note: 
+						- After cleaning within the database (laying in the cloud of amazon)
+						- Transfer db rows into appropiate data format
+						- In the first step we did it for one weekend
+						- Make use of the geojson format
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Pipeline
+						- Query
+						- Transform
+						- find routes
+						- create data structures
+						- store data
+						
+						Note:
+						- Before talking much longer let's just jump into the project for a second.
+						- what we see are all bike trips of three bike providers mobike (blue), nextbike (white), lidl-bike (orange) which are longer than 750m
+						- two days of raw data are already more than 1 mio rows
+						- so we broke the data down to individual days because otherwise the data becomes to big
+					</textarea>
+				</section>	
+
+				
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
 						## How does it scale?
 
-						- automation
-						- setup of structures
-						- aws, docker, cronjobs, db requests
+						- make available data inside visualization available (another **[cronjob](https://gist.github.com/fdnklg/2c784e82735a3122acf1c07009795fd4)**)
+						- transform and write data daily (cronjob at **[uberspace](https://uberspace.de/en/)**)
+						- create own routing service (**[osrm-docker](https://hub.docker.com/r/osrm/osrm-backend/)** at **[aws](https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html)**)
+
+						Note:
+						- If you want to visualize up to date mobility data for each day a couple of steps are necessary
+						- Automate your processes
+						- To become independent from request limits of routing providers it's possible to use open source solutions like osrm
+						- I just want to briefly tell you how the different services are working together
+						- If you're interested how things work on a deeper level we can later dive into the code together
 					</textarea>
 				</section>
 
@@ -327,7 +444,7 @@
 				<section data-markdown data-transition="fade-in fade-out">
 						<textarea data-template>
 							## Pseudonymisation
-							------ slide Alex again
+							-- slide Alex again --
 							- **NO** unique bike ID and **NO** provider ID given
 							- Fields:
 								- TripID - a unique ID
