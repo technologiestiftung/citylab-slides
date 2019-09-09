@@ -284,6 +284,33 @@
 
 				<section data-markdown data-transition="fade-in fade-out">
 					<textarea data-template>
+						```javascript
+						const geojson = {
+							"type": "FeatureCollection",
+							"features": [
+								{
+									"type": "Feature",
+									"geometry": {
+										"type": featureType, // point, polygon, line and more ...
+										"coordinates": [] // [lat,lng] here.
+									},
+									"properties": {
+										...
+									}
+								}
+							]
+						}
+						```
+
+						Notes:
+						- Object with a key that holds an array
+						- Each object in array represents one item, depending on the type your geojson has
+						- Inside the properties key more data about the item that can be stored
+					</textarea>
+				</section>	
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
 						## Data Dive - Data
 						### CSVs:
 						https://drive.google.com/drive/folders/1wsXVdBxhKSqpj-fouNM9RbF7NFrLHUvO
