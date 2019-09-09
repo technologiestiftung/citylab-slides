@@ -171,7 +171,6 @@
 						## Agenda
 						- Context: Why bike-sharing data
 						- Data collection
-						- Pseudonymisation
 						- Data cleaning and data quality
 						- Prototype
 					</textarea>
@@ -280,57 +279,6 @@
 						Notes:
 						- In summary we got rid of most the data to get high quality data 
 						</textarea>
-				</section>
-
-				<section data-markdown data-transition="fade-in fade-out">
-					<textarea data-template>
-						```javascript
-						const geojson = {
-							"type": "FeatureCollection",
-							"features": [
-								{
-									"type": "Feature",
-									"geometry": {
-										"type": featureType, // point, polygon, line and more ...
-										"coordinates": [] // [lat,lng] here.
-									},
-									"properties": {
-										...
-									}
-								}
-							]
-						}
-						```
-
-						Notes:
-						- Object with a key that holds an array
-						- Each object in array represents one item, depending on the type your geojson has
-						- Inside the properties key more data about the item that can be stored
-					</textarea>
-				</section>	
-				
-				<section data-markdown data-transition="fade-in fade-out">
-					<textarea data-template>
-						## Pseudonymisation
-						- **NO** unique bike ID and **NO** provider ID given
-						- Fields:
-							- TripID - a unique ID
-							- Start date & time rounded to the nearest 15 minutes
-							- End date & time rounded to the nearest 15 minutes
-							- StartLatitude - rounded to nearest 3 decimal places
-							- StartLongitude - rounded to nearest 3 decimal places
-							- EndLatitude - rounded to nearest 3 decimal places
-							- EndLongitude - rounded to nearest 3 decimal places
-							- TripDuration - duration of the trip minutes 
-							- TripDistance - distance of trip in miles based on company route data
-
-						[Standard of Harvard Civic Analytics Network](https://data.louisvilleky.gov/dataset/dockless-vehicles)
-
-						Notes:
-						- Become less specific about -> location, time, distance
-						- Remove too personal data from the bike trips
-						- Remove the bike id
-					</textarea>
 				</section>
 
 				<section data-markdown data-transition="fade-in fade-out">
