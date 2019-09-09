@@ -146,6 +146,11 @@
 				
 						### 09.09.2019, Alexandra Kapp und Fabian Dinklage
 
+						Notes:
+						- Welcome again to the city lab
+						- My name and role, Technologiestiftung Berlin
+						- Project intro: Together with alexandra
+						- Investigation of bikesharing providers, analyzed and visualized
 					</textarea>
 				</section>
 
@@ -181,6 +186,12 @@
 								- monitoring of compliance with city laws (e.g. prohibited parking zones)
 						- **Data:** 
 							- trips of three bike-sharing providers for Berlin over three months period
+
+						Notes:
+						- Mobility data provides many perspectives on the urban area of berlin
+						- For Example: This data might help urban planners to spot patterns of how mobility services are used
+						- business ideas through finding the needs fo mobility services
+						- Data could also be used for monitoring by the city. For example to detect false parking..
 						</textarea>
 				</section>
 
@@ -195,6 +206,14 @@
 							- Query all APIs every 4 minutes
 							- Run script via Uberspace server with a cronjob
 							- store data in a database (AWS RDS Postgres Database)
+						
+						Notes:
+						- Let's have a look on how the data has been collected from us
+						- We decided to investigate 3 bikesharing providers (nextbike, lidl bike, mobike), because they all do have an api
+						- There are a couple of steps necessary to get everything working
+						- If you want to read more about detailed review aboutthe different apis check out the article of my collegue alex
+						- We created a data pipeline that queries every 4 minutes the data of moved bikes
+						- store the raw data inside a database on an aws server
 						</textarea>
 				</section>
 
@@ -207,6 +226,9 @@
 							- 3.500.000 rows each day
 							- 25.000.000 rows each week
 							<img src="./assets/images/screenshot-db.png" alt="">
+
+							Notes:
+							- If you do the math the data does become quite big very short amount of time
 						</textarea>
 				</section>
 
@@ -220,6 +242,10 @@
 							(Reduction from 1.5 billion to 5 million rows)
 							_
 							<img src="./assets/images/delete-duplicate.png" alt="">
+
+							Notes:
+							- An essential part of dealing with data is actually cleaning and restructuring it
+							- Here are some examples of data removed 
 						</textarea>
 				</section>
 
@@ -248,6 +274,9 @@
 						- **Merge locations to trips:** 2,4 Mio. trips
 						- **Remove trips < 200 meters OR trips longer than 24 h OR trips faster than 30 km/h:** 0,5 Mio. trips
 						- **Remove provider with implausible data:** 0,3 Mio. trips
+
+						Notes:
+						- In summary we got rid of most the data to get high quality data 
 						</textarea>
 				</section>
 
@@ -279,54 +308,97 @@
 				</section>	
 				
 				<section data-markdown data-transition="fade-in fade-out">
-						<textarea data-template>
-							## Pseudonymisation
-							- **NO** unique bike ID and **NO** provider ID given
-							- Fields:
-								- TripID - a unique ID
-								- Start date & time rounded to the nearest 15 minutes
-								- End date & time rounded to the nearest 15 minutes
-								- StartLatitude - rounded to nearest 3 decimal places
-								- StartLongitude - rounded to nearest 3 decimal places
-								- EndLatitude - rounded to nearest 3 decimal places
-								- EndLongitude - rounded to nearest 3 decimal places
-								- TripDuration - duration of the trip minutes 
-								- TripDistance - distance of trip in miles based on company route data
+					<textarea data-template>
+						## Pseudonymisation
+						- **NO** unique bike ID and **NO** provider ID given
+						- Fields:
+							- TripID - a unique ID
+							- Start date & time rounded to the nearest 15 minutes
+							- End date & time rounded to the nearest 15 minutes
+							- StartLatitude - rounded to nearest 3 decimal places
+							- StartLongitude - rounded to nearest 3 decimal places
+							- EndLatitude - rounded to nearest 3 decimal places
+							- EndLongitude - rounded to nearest 3 decimal places
+							- TripDuration - duration of the trip minutes 
+							- TripDistance - distance of trip in miles based on company route data
 
-							[Standard of Harvard Civic Analytics Network](https://data.louisvilleky.gov/dataset/dockless-vehicles)
-						</textarea>
-					</section>
-					
-					
-				<section data-markdown data-transition="fade-in fade-out">
-						<textarea data-template>
-							## Pseudonymisation
-							- **pseudonomysed_raw.csv**: anononymised raw data (2.5M trips)
-							- **pseudonomysed.csv**: cleaned anonymised raw data (0.3M trips)
-						</textarea>
-					</section>
+						[Standard of Harvard Civic Analytics Network](https://data.louisvilleky.gov/dataset/dockless-vehicles)
+
+						Notes:
+						- Become less specific about -> location, time, distance
+						- Remove too personal data from the bike trips
+						- Remove the bike id
+					</textarea>
+				</section>
 
 				<section data-markdown data-transition="fade-in fade-out">
-						<textarea data-template>
-							## Data Dive - Data
-							### CSVs:
-							https://drive.google.com/drive/folders/1wsXVdBxhKSqpj-fouNM9RbF7NFrLHUvO
-							###### .
-							### GeoJSON:
-							https://drive.google.com/open?id=1PnwTsIKMeKBoLlH05fO-_DGiP7glvjil
-						</textarea>
-					</section>
+					<textarea data-template>
+						## Data Dive - Data
+						### CSVs:
+						https://drive.google.com/drive/folders/1wsXVdBxhKSqpj-fouNM9RbF7NFrLHUvO
+						###### .
+						### GeoJSON:
+						https://drive.google.com/open?id=1PnwTsIKMeKBoLlH05fO-_DGiP7glvjil
 
-					<section data-markdown data-transition="fade-in fade-out">
-						<textarea data-template>
-						## Results
-						</textarea>
-					</section>
+						Notes:
+						- Here you can find the preprocessed data in different formats
+						- say a little bit about the format
+						- We also build a prototype which visualizes all trips per day on a map
+						- Used a framework called deck.gl, maybe some of you have heard of it.
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Introducing Deck.gl
+						- visualize large-scale Geospatial Data
+						- variety of visualization layers out of the box available
+						- hardware accelerated (Web.gl)
+
+						Note:
+						- If you want to handle large geospational datasets
+						- because visualizing them as nodes on the browser can be a pain performance wise
+						- name bullets
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## [Our prototype](https://bikesharing.citylab-berlin.org)
+
+						Note:
+						- We wanted to make the topic of shared mobility more tangible
+						- This visualization is based on the [trips layer](https://github.com/uber/deck.gl/tree/master/examples/website/trips)
+						- Buildings layer added
+						- Camera Handler to show specific spots on the map
+						- daily data is made available through some magic in the backround
+						- Daily Trips peaks Histogram for analysis purposes in d3
+						- Now let's check out how things work under the hood.
+						- right now I'm working on a way to compare startpoints and destinations of districts over time
+						- you see there's much more to get out of the data
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Outlook
+
+						Note:
+						- It's always exciting to merge different datasets with another
+						- For example how is the exisiting mobility network extended by bike sharing providers
+						
+					</textarea>
+				</section>
 	
 				<section data-transition="fade-in fade-out" data-markdown data-background-image="../assets/images/gen-shape.png">
 					<textarea data-template>
 						## Contact:
-						
+
+						### Alexandra Kapp
+						kapp@technologiestiftung-berlin.de\
+						[@lxndrkp](https://twitter.com/lxndrkp)  
+						###### .
+						###### .
 						### Fabian Dinklage  
 						dinklage@technologiestiftung-berlin.de\
 						[@fdnklg](https://twitter.com/fdnklg)
