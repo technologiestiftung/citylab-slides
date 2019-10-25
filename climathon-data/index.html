@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="lib/css/monokai.css">
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../css/reveal.css">
+		<!-- <link rel="stylesheet" href="css/theme/black.css"> -->
+
+		<!-- Theme used for syntax highlighting of code -->
+
+		<!-- Printing and PDF exports -->
+		<!-- <script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script> -->
+	</head>
+	<body>
+
+		<style>
+			.reveal {
+				color: #393a60;
+				text-align: left;
+			}
+
+			.logo {
+				position: absolute;
+				bottom: 50px;
+				right: 50px;
+				width: 200px;
+			}	
+
+			section > p {
+				line-height: 160%;
+			}
+
+			h1 {
+				color: #2f2fa2;
+				font-size: 3.75rem;
+				text-align: left;
+				margin-bottom: 3rem;
+			}
+
+			h2 {
+				color: #2f2fa2;
+				font-size: 3rem;
+				margin-bottom: 3rem;
+				text-align: left;
+			}
+
+			h3 {
+				font-size: 2rem;
+				margin-bottom: 20px;
+				text-align: left;
+			}
+
+			h4 {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+			h5 {
+				font-size: 1rem;
+				text-align: left;
+				margin-bottom: 5px;
+			}
+
+			h6 {
+				color: white;
+			}
+
+			strong {
+				color: #393a60;
+			}
+
+			p {
+				color: #393a60;
+				text-align: left;
+				font-size: 1.5rem;
+			}
+
+			ul {
+				margin: 0;
+			}
+
+			ul {
+				list-style-type: none;
+			}
+
+			ul > li {
+				text-indent: -5px;
+			}
+
+			ul > li:before {
+				content: "–  ";
+				text-indent: -10px;
+			}
+
+			li {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+			ul > li {
+				margin-left: 30px;
+			}
+
+			ul > li:first-of-type {
+				margin-top: 10px;
+			}
+
+			@media screen and (max-width: 1000px) {
+				.logo {
+					position: absolute;
+					bottom: 50px;
+					right: 50px;
+					width: 150px;
+				}	
+			}
+
+			pre {
+				background-color: white !important;
+				font-size: 1.25rem !important;
+			}
+
+		</style>
+
+		
+		
+		<div class="reveal">
+			<img class="logo" src="../assets/citylab-logo.svg" alt="">
+			<div class="slides">
+
+				<section data-markdown>
+					<textarea data-template data-background-transition="fade" data-transition="fade-out">
+						# Climathon 2019: Open Data Sources
+				
+						### 25.10.2019, Victoria Boeck
+
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Slides
+						https://technologiestiftung.github.io/citylab-slides/climathon-data/	
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## Berlin Open Data Portal
+
+					https://daten.berlin.de
+
+					- 2000+ Datasets
+					- *Metadata* Portal – only links
+					- All types of data (statistical, geospatial, etc)
+					- Mostly individual files (few APIs)
+
+					<img src="./assets/images/od_portal.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## Berlin Open Data Portal
+
+					### Dataset: Station Entrance Coordinates
+					[Link](https://daten.berlin.de/datensaetze/koordinaten-der-zugangsm%C3%B6glichkeiten-zu-stationen-0)
+
+					<img src="./assets/images/od_portal_stations.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## Berlin Open Data Portal
+
+					### Dataset: VBB Public Transit Schedules
+					[Link](https://daten.berlin.de/datensaetze/koordinaten-der-zugangsm%C3%B6glichkeiten-zu-stationen-0)
+
+					<img src="./assets/images/od_vbb.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## FIS-Broker
+
+					https://fbinter.stadt-berlin.de/fb/index.jsp 
+
+					- 500+ Datasets
+					- Geospatial data for Berlin
+					- Data provided as WMS (rendered maps) or WFS (raw data)
+
+					<img src="./assets/images/fis_broker.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## FIS-Broker
+
+					### Dataset: Street Survey (2014)
+					[Link](https://fbinter.stadt-berlin.de/fb/index.jsp?loginkey=zoomStart&mapId=k_StraDa@senstadt&bbox=385587,5818190,396604,5824214)
+
+					<img src="./assets/images/fis_broker_survey.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## FIS-Broker
+
+					### Dataset: Traffic Volumes (2014)
+					[Link](https://fbinter.stadt-berlin.de/fb/index.jsp?loginkey=zoomStart&mapId=wmsk_07_01verkmeng2014@senstadt&bbox=387866,5818469,395425,5822591)
+
+					<img src="./assets/images/fis_broker_volume.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## FIS-Broker
+
+					### Dataset: Air Quality (2015)
+					[Link](https://fbinter.stadt-berlin.de/fb/index.jsp?loginkey=zoomStart&mapId=wmsk_03_12_2emissionen@senstadt&bbox=384196,5818470,395453,5824325)
+
+					<img src="./assets/images/fis_broker_emissions.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## FIS-Broker
+					
+					### Downloading from the FIS-Broker: 
+
+					How-to guide:
+
+					https://lab.technologiestiftung-berlin.de/projects/fisbroker-to-qgis/en/
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+					## Uber Movement Platform
+
+					### Dataset: Traffic Speeds 
+					[Link](https://movement.uber.com/explore/berlin/)
+
+					<img src="./assets/images/uber.png" alt="">
+			
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Questions we're interested in:
+						- How can we **maximize the complementarity** of Berlin’s public transit and shared mobility offerings?
+						- Where are the opportunities (using data) to optimize one or both systems, so that it is **as easy as possible** for citizens to shift seamlessly between both, and, in the process, **decrease reliance on private cars in the city**?
+					</textarea>
+				</section>
+
+				<section data-markdown data-transition="fade-in fade-out">
+					<textarea data-template>
+						## Questions we're interested in:
+						- When it comes to provision of infrastructure – i.e. public transit, bike paths, sidewalks, general streets, etc. – where are there **opportunities to improve or optimize existing infrastructure** (or add new infrastructure) to maximize the desirability and viability of more sustainable and environmentally friendly modes of transit (e.g. walking, biking, public transit)?
+						- Alternatively: How can we **use data on existing infrastructure** to encourage citizens to use more sustainable mobility practices, such as using geospatial data to create tools that highlight the walkability or “bikeability” of certain areas for citizens?
+					</textarea>
+				</section>
+
+				<section data-transition="fade-in fade-out" data-markdown data-background-image="../assets/images/gen-shape.png">
+					<textarea data-template>
+						## Contact:
+
+						### CityLAB Berlin
+
+						[@citylabberlin](https://twitter.com/citylabberlin)\
+						[citylab-berlin.org](https://citylab-berlin.org)
+
+						Victoria (Tori) Boeck
+
+						Boeck@technologiestiftung-berlin.de
+					
+					</textarea>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				// slideNumber: true,
+				controls: false,
+				backgroundTransition: 'fade',
+				transition: 'linear',
+				center: true,
+				transitionSpeed: 'slow',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
